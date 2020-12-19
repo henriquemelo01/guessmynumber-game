@@ -2,6 +2,7 @@
 
 // Select elements:
 const inputNumber = document.querySelector(".guess"); // Select input box
+const msg = document.querySelector(".message");
 
 // Generate random number between 1 and 20:
 const maxNumber = 20;
@@ -21,9 +22,14 @@ btnCheck.addEventListener("click", function () {
   if (!guess) {
     document.querySelector(".message").textContent =
       "🚨 Fill the box with a number";
-  }
-
-  if (guess === computer) {
-    document.querySelector(".message").textContent = "🎉 Correct number!! ";
+  } else {
+    if (guess === computer) {
+      msg.textContent = "🎉 Correct number!! ";
+      document.body.style.backgroundColor = "green";
+    } else if (guess > computer) {
+      msg.textContent = "📈 Too High ";
+    } else if (guess < computer) {
+      msg.textContent = "📉 Too Low ";
+    }
   }
 });
