@@ -51,17 +51,23 @@ btnCheck.addEventListener("click", function () {
     document.querySelector(".message").textContent =
       "🚨 Fill the box with a number";
   } else {
-    score--;
-    document.querySelector(".score").textContent = score; // Change score
+    if (score > 0) {
+      score--;
+      document.querySelector(".score").textContent = score; // Change score
+    }
+    if (score === 0) {
+      msg.textContent = "🛑 You loose the game ! Try again";
+      document.body.style.backgroundColor = "rgb(148, 30, 30)";
+    }
 
-    if (guess === computer) {
+    if (guess === computer && score > 0) {
       msg.textContent = "🎉 Correct number!! ";
       document.querySelector(".number").textContent = computer;
-      document.body.style.backgroundColor = "green";
+      document.body.style.backgroundColor = "rgb(19, 141, 19)";
       highscores.push(score); // add score from array
-    } else if (guess > computer) {
+    } else if (guess > computer && score > 0) {
       msg.textContent = "📈 Too High ";
-    } else if (guess < computer) {
+    } else if (guess < computer && score > 0) {
       msg.textContent = "📉 Too Low ";
     }
 
