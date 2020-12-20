@@ -56,7 +56,7 @@ btnCheck.addEventListener("click", function () {
       document.querySelector(".score").textContent = score; // Change score
     }
     if (score === 0) {
-      msg.textContent = "🛑 You loose the game ! Try again";
+      msg.textContent = "🛑 You lost the game ! Try again";
       document.body.style.backgroundColor = "rgb(148, 30, 30)";
     }
 
