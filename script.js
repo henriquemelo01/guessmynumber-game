@@ -4,6 +4,11 @@
 const inputNumber = document.querySelector(".guess"); // Select input box
 const msg = document.querySelector(".message");
 
+// Display Message:
+const displayMsg = function (message) {
+  msg.textContent = message;
+};
+
 // Generate random number between 1 and 20:
 const maxNumber = 20;
 const randomNumber = function () {
@@ -12,7 +17,7 @@ const randomNumber = function () {
 };
 
 let computer = randomNumber();
-let score = maxNumber;
+let score = 20;
 let highscores = [];
 
 // Comparing highscores, using an array with parameter and return max value:
@@ -32,8 +37,8 @@ const compareHighscores = function (arr) {
 const reset = function () {
   computer = randomNumber();
   document.body.style.backgroundColor = "#222";
-  msg.textContent = "Start guessing...";
-  score = maxNumber;
+  displayMsg("Start guessing...");
+  score = 20;
   document.querySelector(".score").textContent = score;
   document.querySelector(".number").textContent = "?";
   inputNumber.value = "";
@@ -48,27 +53,24 @@ btnCheck.addEventListener("click", function () {
   // Testing input:
 
   if (!guess) {
-    document.querySelector(".message").textContent =
-      "🚨 Fill the box with a number";
+    displayMsg("🚨 Fill the box with a number");
   } else {
-    if (score > 0) {
-      score--;
-      document.querySelector(".score").textContent = score; // Change score
-    }
+    score--;
+    document.querySelector(".score").textContent = score; // Change score
     if (score === 0) {
-      msg.textContent = "🛑 You lost the game ! Try again";
+      displayMsg("🛑 You lost the game ! Try again");
       document.body.style.backgroundColor = "rgb(148, 30, 30)";
-    }
-
-    if (guess === computer && score > 0) {
-      msg.textContent = "🎉 Correct number!! ";
-      document.querySelector(".number").textContent = computer;
-      document.body.style.backgroundColor = "rgb(19, 141, 19)";
-      highscores.push(score); // add score from array
-    } else if (guess > computer && score > 0) {
-      msg.textContent = "📈 Too High ";
-    } else if (guess < computer && score > 0) {
-      msg.textContent = "📉 Too Low ";
+    } else if (score > 0) {
+      if (guess === computer && score > 0) {
+        displayMsg("🎉 Correct number!!");
+        document.querySelector(".number").textContent = computer;
+        document.body.style.backgroundColor = "rgb(19, 141, 19)";
+        highscores.push(score); // add score from array
+      } else if (score > 0) {
+        displayMsg(
+          guess > computer && score > 0 ? "📈 Too High!" : "📉 Too Low!"
+        );
+      }
     }
 
     const maxHighscore = compareHighscores(highscores);
