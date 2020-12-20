@@ -5,7 +5,7 @@
 <h2> <b>Description:</b></h2>
 <br>
 <p> Guess my number is a simple web application that was developed while i was studyng DOM. </p>
-<p>DOM is a API that allows the interaction of script (JavaScript) with the Browser, treating documents (html,css,xml) as objects.
+<p>DOM is an API that allows the interaction of script (JavaScript) with the Browser, treating documents (html,css,xml) as objects.
 </p>
 References: <a href = "https://www.notion.so/Masterclass-DOM-48ef7efae2ad4e0c8f9b462b675d2b0d"> DOM Master Class Rocketseat</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">MDN</a>
 <p>
